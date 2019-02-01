@@ -1,17 +1,24 @@
 var lastKey = -1; //this is the key to store each skill entry in localStorage
 var myStorage = window.localStorage;
 
+//function to render add the new skill to the const newSkill which is a template literal
+function renderNewSkill(template, $data){
+    // console.log('data ' + $data);
+    return (template($data));
+}
+
+const newSkill = (skill) => `
+                <div class = "skill-line">
+                    <div class = "delete-skill">X</div>
+                    <div class = "skill">${skill}</div>
+                </div>`;
+
 //this function will read each entry in localStorage to display it in the screen
 function getSkills(){
     var count = 0;
     if(myStorage.length){
         for(var i =0; i < myStorage.length; i++){
-            var $v = $(`
-                <div class = "skill-line">
-                    <div class = "delete-skill">X</div>
-                    <div class = "skill">${myStorage[(myStorage.key(i))]}</div>
-                </div>`);
-            $('.all-skills').append($v);
+            $('.all-skills').append($(renderNewSkill(newSkill, myStorage[(myStorage.key(i))])));
         }
         lastKey=parseInt(myStorage.key(myStorage.length -1));
     } else {
@@ -39,12 +46,7 @@ $('#add-skill').on('click', function(){
     //delete the text entered to the input element
     $('input')[0].value="";
     if(input){ //if there is text
-        var $v = $(`
-            <div class = "skill-line">
-                <div class = "delete-skill">X</div>
-                <div class = "skill">${input}</div>
-            </div>`);
-        $('.all-skills').append($v);
+        $('.all-skills').append($($(renderNewSkill(newSkill, input))));
         lastKey+=1; //key used will be +1 from the last key
         myStorage.setItem(lastKey.toString(), input);
     }
