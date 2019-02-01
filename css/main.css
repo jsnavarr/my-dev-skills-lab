@@ -1,0 +1,55 @@
+body {
+    width: 50%;
+    margin: 200px auto;
+    font-family: helvetica;
+    font-size: 20px;
+}
+
+header {
+    background-color: rgb(132, 202, 119);
+    color: white;
+    justify-content: center;
+}
+
+p {
+    margin: 0;
+    padding: 10px;
+}
+
+.skill-line, .add-skill-line, header {
+    display: flex;
+    flex-direction: row;
+    margin: 20px auto;
+}
+
+.add-skill-line {
+    justify-content: space-between;
+}
+
+.delete-skill {
+    background-color: rgb(239, 90, 93);
+    color: white;
+    padding: 5px;
+}
+
+.skill {
+    color: rgb(255, 175, 0);
+    padding: 5px 20px;
+}
+
+input {
+    width: 70%;
+}
+
+input, #add-skill {
+    border: 2px solid rgb(132, 202, 119);;
+    color: rgb(132, 202, 119);;
+}
+
+#add-skill {
+    padding: 5px 10px;
+    width: 25%;
+}
+
+
+
